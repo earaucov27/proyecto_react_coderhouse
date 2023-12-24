@@ -1,32 +1,57 @@
-// NavBar.js
-import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// NavBar.jsx
+import React from 'react'
+import CartWidget from './CartWidget';
+
+/* IMPORTACIONES BOOTSTRAP */
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+
 
 const NavBar = () => {
-
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <div class='container'>
-                <a className="navbar-brand" href="#">3DPixels</a>
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarNav">
-                    <ul className="navbar-nav">
-                        <li className="nav-item active">
-                            <a className="nav-link" href="#">Juegos</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">Acerca de</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">Contacto</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    );
+
+        <div>
+            <Navbar expand="lg" className="bg-body-tertiary" bg="dark" data-bs-theme="dark">
+                <Container>
+                    <Navbar.Brand href="#home">
+                        <img
+                            alt=""
+                            src="/src/assets/images/3dpixels-logo.png"
+                            width="30"
+                            height="30"
+                            className="d-inline-block align-top"
+                        />{' '}
+                        3DPixels
+                    </Navbar.Brand>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav className="ms-auto">
+                            <NavDropdown title="videojuegos" id="basic-nav-dropdown">
+                                <NavDropdown.Item href="#action/3.1">PS5</NavDropdown.Item>
+                                <NavDropdown.Item href="#action/3.2">Xbox Series</NavDropdown.Item>
+                                <NavDropdown.Item href="#action/3.3">Switch</NavDropdown.Item>
+                            </NavDropdown>
+                            <NavDropdown title="consolas" id="basic-nav-dropdown">
+                            <NavDropdown.Item href="#action/3.1">PS5</NavDropdown.Item>
+                                <NavDropdown.Item href="#action/3.2">Xbox Series</NavDropdown.Item>
+                                <NavDropdown.Item href="#action/3.3">Switch</NavDropdown.Item>
+                            </NavDropdown>
+                            <NavDropdown title="accesorios" id="basic-nav-dropdown">
+                            <NavDropdown.Item href="#action/3.1">PS5</NavDropdown.Item>
+                                <NavDropdown.Item href="#action/3.2">Xbox Series</NavDropdown.Item>
+                                <NavDropdown.Item href="#action/3.3">Switch</NavDropdown.Item>
+                            </NavDropdown>
+                            <CartWidget />
+                        </Nav>
+                    </Navbar.Collapse>
+
+                </Container>
+            </Navbar>
+
+        </div>
+    )
 }
 
-export default NavBar;
+export default NavBar

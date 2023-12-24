@@ -1,17 +1,16 @@
-// App.js
-import React from 'react';
-import NavBar from './components/NavBar';
+// App.jsx
+import React from 'react'
+import NavBar from './components/NavBar.jsx'
+/* IMPORTACIONES BOOTSTRAP */
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-function App() {
+const App = () => {
   return (
     <div>
       <NavBar />
-      <div className="container mt-4">
-        {/* Aquí va el contenido de tu página */}
-        <h1>3DPixels</h1>
-      </div>
     </div>
-  );
+    
+  )
 }
 
-export default App;
+export default App

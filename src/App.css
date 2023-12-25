@@ -59,3 +59,16 @@ body {
   background-color: white; 
 }
 
+/* Item.jsx */
+
+.agregar-al-carro {
+  display: block;
+  margin-top: 10px;
+  text-align: center;
+  color: #007bff; /* Color del enlace */
+  text-decoration: none;
+}
+
+.agregar-al-carro:hover {
+  text-decoration: underline; /* Subrayar al pasar el ratón sobre el enlace */
+}

@@ -1,4 +1,4 @@
-// Item.jsx
+//Item.jsx
 import React from 'react';
 import { Card, Button } from 'react-bootstrap';
 import ItemCount from './ItemCount';
@@ -11,11 +11,6 @@ const Item = ({ titulo, descripcion, precio, imagen }) => {
                 <Card.Title>{titulo}</Card.Title>
                 <Card.Text>{descripcion}</Card.Text>
                 <Card.Text>${precio}</Card.Text>
-                {/* <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                    <Button variant="primary" style={{ marginRight: '10px' }}>Comprar</Button>
-                    <a href="#" className="agregar-al-carro">Agregar al carro</a>
-                    
-                </div> */}
                 <ItemCount />
             </Card.Body>
         </Card>

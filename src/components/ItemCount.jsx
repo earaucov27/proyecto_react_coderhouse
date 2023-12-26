@@ -37,7 +37,7 @@ const ItemCount = () => {
         <div>
             <Button variant="danger" onClick={restar}>-</Button>{' '}
             <Button variant="success" onClick={sumar}>+</Button>{' '}
-            <Button variant="secondary" onClick={mostrarMensajeAgregar}>Agregar {contador}</Button>{' '}
+            <Button variant="secondary" onClick={mostrarMensajeAgregar}>Agregar {contador} {contador === 1 ? 'unidad' : 'unidades'}</Button>{' '}
 
             <Modal show={mostrarModalAgregar} onHide={cerrarModalAgregar} centered>
                 <Modal.Header closeButton>

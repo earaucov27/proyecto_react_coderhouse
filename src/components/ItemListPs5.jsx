@@ -1,3 +1,4 @@
+// ItemListPs5.jsx
 import React from 'react';
 import Item from './Item';
 
@@ -9,6 +10,8 @@ const ItemListPs5 = ({ juegosps5 }) => {
             {juegosps5.map((ps5) => (
                 <Col key={ps5.id}>
                     <Item
+                        
+                        id={ps5.id}
                         titulo={ps5.titulo}
                         descripcion={ps5.descripcion}
                         precio={ps5.precio}

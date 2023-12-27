@@ -1,10 +1,12 @@
-// ItemListContainerPS5.jsx
-import React, { useState } from 'react'; // Importa useState
-import ItemListPs5 from './ItemListPs5';
-import ItemDetail from './ItemDetail';
+// ItemDetail.jsx
+import React from 'react';
+import { useParams } from 'react-router-dom';
 
-const ItemListContainerPS5 = ({ geeting }) => {
-    const [juegosps5, setJuegosps5] = useState([ // Cambia el nombre de la variable
+const ItemDetail = () => {
+    const { id } = useParams();
+
+    // Array local de juegos
+    const juegosps5 = [
         {   
             id: 'PS5-1',
             titulo: "God of War Ragnarok",
@@ -33,13 +35,25 @@ const ItemListContainerPS5 = ({ geeting }) => {
             precio: 74990,
             imagen: "/src/assets/images/ps5-tlou.jpg"
         }
-    ]);
+        // ... otros juegos
+    ];
+
+    // Encuentra el juego específico usando el ID
+    const juegoEncontrado = juegosps5.find(juego => juego.id === id);
+
+    // Manejo si el juego no se encuentra
+    if (!juegoEncontrado) {
+        return <div>Producto no encontrado</div>;
+    }
 
     return (
         <div>
-            <ItemListPs5 juegosps5={juegosps5} />
+            <h2>{juegoEncontrado.titulo}</h2>
+            <p>{juegoEncontrado.descripcion}</p>
+            <p>Precio: ${juegoEncontrado.precio}</p>
+            <img src={juegoEncontrado.imagen} alt={juegoEncontrado.titulo} />
         </div>
     );
 };
 
-export default ItemListContainerPS5;
+export default ItemDetail;

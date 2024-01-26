@@ -1,64 +1,31 @@
 // ItemListContainerXbox.jsx
-import React from 'react';
-import ItemList from './ItemListXbox.jsx';
+import React, { useEffect, useState } from 'react';
+import { collection, getDocs, getFirestore } from "firebase/firestore";
+import ItemListXbox from './ItemListXbox.jsx';
+import LoaderModal from './LoaderModal'; // Importa el componente
 
-const ItemListContainerXbox = ({ geeting }) => {
-    const juegosxbox = [
-        { 
-            id: 'XBOX-1',
-            titulo: "Forza Horizon 5",
-            descripcion: "XBOX",
-            precio: 64990,
-            imagen: "/src/assets/images/xbox-fh5.png"
-        },
-        {   
-            id: 'XBOX-2',
-            titulo: "Gears 5",
-            descripcion: "XBOX",
-            precio: 49990,
-            imagen: "/src/assets/images/xbox-gow5.png"
-        },
-        {
-            id: 'XBOX-3',
-            titulo: "Halo Infinite",
-            descripcion: "XBOX",
-            precio: 74990,
-            imagen: "/src/assets/images/xbox-halo.jpg"
-        },
 
-        {
-            id: 'XBOX-4',
-            titulo: "Starfield",
-            descripcion: "XBOX",
-            precio: 74990,
-            imagen: "/src/assets/images/xbox-starfield.jpg"
-        }
+const ItemListContainerXbox = () => {
+    const [juegosxbox, setJuegosXbox] = useState([]);
 
-        
-    ];
+    useEffect(() => {
+        const db = getFirestore();
+        const itemCollection = collection(db, "videojuegosxbox");
 
-    const mostrarJuegosXBOX = new Promise((resolve, reject) => {
-        if (juegosxbox.length > 0) {
-            setTimeout(() => {
-                resolve(juegosxbox);
-            }, 3000);
-        } else {
-            reject("No hay productos disponibles.");
-        }
-    });
-
-    mostrarJuegosXBOX
-        .then((juegosxbox) => {
-            console.log("Productos disponibles:", juegosxbox);
-        })
-        .catch((error) => {
-            console.error("Error al cargar productos:", error);
+        getDocs(itemCollection).then((snapshot) => {
+            const docs = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+            setJuegosXbox(docs);
         });
+    }, []);
 
     return (
-        <div>
-            <ItemList juegosxbox={juegosxbox} />
-        </div>
+        <>
+            {/* Usa el componente LoaderModal aquí */}
+            <LoaderModal show={showLoader} />
+
+            {/* Contenido principal */}
+            <ItemList juegos={juegos} />
+        </>
     );
 };
 

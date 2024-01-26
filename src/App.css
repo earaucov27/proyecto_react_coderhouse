@@ -1,33 +1,55 @@
 /* IMPORT*/
-:root{
+:root {
   --gris: #242424;
   --verde: #58DD94;
   --blanco: #F1F1F1;
 }
 
 body {
-  background-color: var(--blanco)
+  background-color: var(--blanco);
+  height: 100%;
+  margin: 0;
+}
+
+#main-container {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 /* App.jsx */
-.encabezado{
+.encabezado {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50vh;
+  height: 45vh;
   background-color: var(--gris);
   text-align: center;
+  margin-bottom: 5rem;
 }
 
 .encabezado img {
   max-width: 100%;
   max-height: 200px;
-  margin: 10px 0;
+  margin-right: 10px;
 }
+
+.textos-encabezado {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.encabezado h1,
+.encabezado p {
+  color: var(--blanco);
+  margin: 0;
+}
+
 
 .encabezado h1 {
   color: var(--blanco);
-  text-shadow: 0 0 10px var(--verde); /* Agrega un resplandor verde al texto */
+  text-shadow: 0 0 10px var(--verde);
 }
 
 .encabezado p {
@@ -36,7 +58,7 @@ body {
 
 .text-container {
   text-align: left;
-  margin-right: 10px; /* Ajusta el margen derecho según sea necesario */
+  margin-right: 10px;
 }
 
 
@@ -46,17 +68,30 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 1000; 
+  z-index: 1000;
 }
+
+.navbar .nav-link {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.cart-icon-link {
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+}
+
 
 /* Item.jsx */
 .cards {
-  padding: 1rem; 
+  padding: 1rem;
   margin-top: 3rem;
 }
 
 .cards img {
-  background-color: white; 
+  background-color: white;
 }
 
 /* Item.jsx */
@@ -71,4 +106,139 @@ body {
 
 .agregar-al-carro:hover {
   text-decoration: underline;
+}
+
+#resumenDelCarrito,
+#informacionDelComprador,
+#productosSeleccionados {
+  font-weight: bold;
+}
+
+#productosSeleccionados {
+  margin: 20px;
+  font-size: 20px;
+}
+
+#div-resumen-del-producto {
+  padding-top: 3.7rem;
+}
+
+#div-informacion-del-comprador {
+  padding-top: 3.7rem;
+}
+
+#pAsegurarCorreo {
+  font-weight: bold;
+}
+
+#h1CarritoVacio {
+  text-align: center;
+  margin: 2rem;
+  padding: 5rem;
+
+}
+
+#productoNoEncontrado {
+  text-align: center;
+  margin: 2rem;
+}
+
+/* Footer Styles */
+.footer-container {
+  background-color: var(--gris);
+  color: var(--blanco);
+  padding: 20px;
+  text-align: center;
+}
+
+.footer-links {
+  color: var(--verde);
+  margin: 10px;
+}
+
+.footer-icons {
+  color: var(--blanco);
+  margin: 10px;
+}
+
+.footer-bottom {
+  background-color: var(--verde);
+  color: var(--blanco);
+  text-align: center;
+  padding: 10px;
+  color: var(--gris);
+  font-weight: bold;
+}
+
+.footer-general {
+  padding-top: 5rem;
+}
+
+.content-wrap {
+  flex: 1;
+}
+
+/* Cart Styles */
+.cart-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.cart-empty {
+  text-align: center;
+  margin: 2rem;
+}
+
+.cart-card {
+  width: auto;
+  margin: 10px;
+}
+
+.cart-summary {
+  min-width: 300px;
+  max-width: 500px;
+  margin: 10px;
+}
+
+.cart-form {
+  min-width: 300px;
+  max-width: 500px;
+  margin: 10px;
+}
+
+/* ESTILOS BOTONES CARDS */
+.btn-contador-agregar .btn-contador,
+.btn-contador-agregar .btn-agregar {
+  margin: 0 5px 0 0;
+  height: auto;
+  padding: 0.5rem 1rem;
+
+}
+
+.fuente-contador {
+  font-weight: bold;
+}
+
+/* ESTILOS PARA DETALLE VIDEOJUEGO */
+.imagen-detalle-juego {
+  margin: 1rem 0
+}
+
+.descripcion-detalle-juego {
+  position: relative;
+  margin: 1rem 0;
+}
+
+.estilos-imagen-detalle-juego {
+  max-width: 100%;
+  height: auto;
+}
+
+.linea-vertical::before {
+  content: "";
+  position: absolute;
+  left: -15px;
+  border-left: 1px solid rgb(122, 122, 122);
+  height: 100%;
 }

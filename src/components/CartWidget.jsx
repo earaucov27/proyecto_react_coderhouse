@@ -1,14 +1,18 @@
-import React from 'react';
+// CartWidget.jsx
+import React, { useContext } from 'react';
 import { FaShoppingCart } from 'react-icons/fa';
-import Badge from 'react-bootstrap/Badge'; // Importa Badge de react-bootstrap
+import { Badge } from 'react-bootstrap';
+import { CartContext } from '../context/CartContext';
 
 const CartWidget = () => {
-    const cartItemCount = 5; // Número hardcodeado (fijo) para representar la cantidad en el carrito
+    const { cart } = useContext(CartContext);
+
+    const itemCount = cart.reduce((total, item) => total + item.quantity, 0);
 
     return (
         <div style={{ display: 'flex', alignItems: 'center' }}>
             <FaShoppingCart size={20} style={{ marginRight: '10px', color: 'white' }} />
-            <Badge bg="danger">{cartItemCount}</Badge> {/* Utiliza Badge de Bootstrap para el número */}
+            {cart.length > 0 && <Badge bg="danger">{itemCount}</Badge>}
         </div>
     );
 };

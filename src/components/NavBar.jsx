@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; // Importa Link
 import CartWidget from './CartWidget';
-
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -26,11 +25,12 @@ const NavBar = ({ setSelectedPlatform }) => {
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="ms-auto">
                             <NavDropdown title="Plataformas" id="basic-nav-dropdown">
-                                <NavDropdown.Item as={Link} to="/ps5" onClick={() => setSelectedPlatform("ps5")}>PS5</NavDropdown.Item>
-                                <NavDropdown.Item as={Link} to="/xbox" onClick={() => setSelectedPlatform("xbox")}>Xbox</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/ps5" >PS5</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/xbox" >Xbox</NavDropdown.Item>
                             </NavDropdown>
-
-                            <CartWidget />
+                            <Link to="/cart" className="cart-icon-link">
+                                <CartWidget />
+                            </Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

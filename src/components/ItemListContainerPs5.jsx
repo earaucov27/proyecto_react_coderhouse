@@ -1,44 +1,23 @@
 // ItemListContainerPS5.jsx
-import React, { useState } from 'react'; // Importa useState
+import React, { useEffect, useState } from 'react';
+import { collection, getDocs, getFirestore } from "firebase/firestore";
 import ItemListPs5 from './ItemListPs5';
-import ItemDetail from './ItemDetail';
 
-const ItemListContainerPS5 = ({ geeting }) => {
-    const [juegosps5, setJuegosps5] = useState([ // Cambia el nombre de la variable
-        {   
-            id: 'PS5-1',
-            titulo: "God of War Ragnarok",
-            descripcion: "PS5",
-            precio: 64990,
-            imagen: "/src/assets/images/ps5-gow.png"
-        },
-        {   
-            id: 'PS5-2',
-            titulo: "Horizon Forbidden West",
-            descripcion: "PS5",
-            precio: 49990,
-            imagen: "/src/assets/images/ps5-hfw.png"
-        },
-        {   
-            id: 'PS5-3',
-            titulo: "Spider-Man 2",
-            descripcion: "PS5",
-            precio: 74990,
-            imagen: "/src/assets/images/ps5-sm2.png"
-        },
-        {   
-            id: 'PS5-4',
-            titulo: "The last of Us Part I",
-            descripcion: "PS5",
-            precio: 74990,
-            imagen: "/src/assets/images/ps5-tlou.jpg"
-        }
-    ]);
+const ItemListContainerPS5 = () => {
+    const [juegosps5, setJuegosPS5] = useState([]);
+
+    useEffect(() => {
+        const db = getFirestore();
+        const itemCollection = collection(db, "videojuegos");
+
+        getDocs(itemCollection).then((snapshot) => {
+            const docs = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+            setJuegosPS5(docs);
+        });
+    }, []);
 
     return (
-        <div>
-            <ItemListPs5 juegosps5={juegosps5} />
-        </div>
+        <ItemListPs5 juegosps5={juegosps5} />
     );
 };
 

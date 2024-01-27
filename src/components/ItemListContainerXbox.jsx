@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { collection, getDocs, getFirestore } from "firebase/firestore";
 import ItemListXbox from './ItemListXbox.jsx';
-import Loader from './Loader'; // Importa el componente de loader
+import Loader from './Loader';
 
 const ItemListContainerXbox = () => {
     const [juegosxbox, setJuegosXbox] = useState([]);
-    const [showLoader, setShowLoader] = useState(true); // Mostrar el loader al principio
+    const [showLoader, setShowLoader] = useState(true);
 
     useEffect(() => {
         const db = getFirestore();
@@ -14,16 +14,16 @@ const ItemListContainerXbox = () => {
         getDocs(itemCollection).then((snapshot) => {
             const docs = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
             setJuegosXbox(docs);
-            setShowLoader(false); // Ocultar el loader cuando los datos estén cargados
+            setShowLoader(false);
         });
     }, []);
 
     return (
         <>
             {showLoader ? (
-                <Loader /> // Muestra el loader mientras los datos se cargan
+                <Loader />
             ) : (
-                <ItemListXbox juegosxbox={juegosxbox} /> // Muestra la lista de juegos cuando los datos están listos
+                <ItemListXbox juegosxbox={juegosxbox} />
             )}
         </>
     );

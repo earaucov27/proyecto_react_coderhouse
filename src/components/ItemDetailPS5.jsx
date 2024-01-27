@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { doc, getDoc, getFirestore } from 'firebase/firestore';
 import { Row, Col, Button } from 'react-bootstrap';
+import Loader from './Loader';
 
 
 const ItemDetailPS5 = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const [juego, setJuego] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const db = getFirestore();
@@ -16,6 +18,7 @@ const ItemDetailPS5 = () => {
         getDoc(docRef).then((snapshot) => {
             if (snapshot.exists()) {
                 setJuego({ id: snapshot.id, ...snapshot.data() });
+                setIsLoading(false); 
             }
         });
     }, [id]);
@@ -23,6 +26,11 @@ const ItemDetailPS5 = () => {
     const handleBack = () => {
         navigate(-1);
     };
+
+    if (isLoading) {
+        // Muestra el loader mientras isLoading sea true
+        return <Loader />;
+    }
 
     if (!juego) {
         return (

@@ -4,15 +4,15 @@ import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
 
 const Footer = () => {
     return (
-        <div className='footer-general'>
-            <footer className="footer-container">
+        <div className='footer-general' id="main-container">
+            <footer className="footer-container content-wrap">
                 <h5>Contacto</h5>
                 <p>3dpixels@gmail.com | Tel: 9-8973729</p>
 
                 <div>
-                    <FaFacebook className="footer-icons" />
-                    <FaTwitter className="footer-icons" />
-                    <FaInstagram className="footer-icons" />
+                    <Link to="#"><FaFacebook className="footer-icons" /></Link>
+                    <Link to="#"><FaTwitter className="footer-icons" /></Link>
+                    <Link to="#"><FaInstagram className="footer-icons" /></Link>
                 </div>
 
                 <div>

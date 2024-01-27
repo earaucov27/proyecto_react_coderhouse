@@ -1,4 +1,3 @@
-// App.jsx
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import React from 'react';
 import { CartProvider } from './context/CartContext';
@@ -28,14 +27,20 @@ const App = () => {
                         </div>
                         <div className='container content-wrap'>
                             <Routes>
-                                <Route path="/" element={<ItemListContainerPS5 />} />
+                                <Route
+                                    path="/"
+                                    element={
+                                        <>
+                                            <ItemListContainerPS5 />
+                                        </>
+                                    }
+                                />
                                 <Route path="/ps5" element={<ItemListContainerPS5 />} />
                                 <Route path="/xbox" element={<ItemListContainerXbox />} />
                                 <Route path="/productPS5/:id" element={<ItemDetailPS5 />} />
                                 <Route path="/productXbox/:id" element={<ItemDetailXbox />} />
                                 <Route path="/cart" element={<Cart />} />
                             </Routes>
-
                         </div>
                     </div>
                     <Footer />
